@@ -1,0 +1,33 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    ios_base::sync_with_stdio(false);
+     cin.tie(NULL);
+    int n;
+    cin>>n;
+    vector < pair <long,int > > ar(n);
+    for(int i=0;i<n;i++) 
+    {
+        cin>>ar[i].first;
+        ar[i].second=i;
+    }
+    sort(ar.begin(),ar.end());
+    long minp=0;
+    for(int i=1;i<n;i++){
+        if (ar[i].second>ar[i-1].second) continue;
+        long diff=ar[i].first-ar[i-1].first;
+        if(!minp) minp=diff;
+        if(diff<minp)
+            minp=diff;
+        }
+    cout<<minp;
+    return 0;
+}
+
